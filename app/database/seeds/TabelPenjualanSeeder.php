@@ -1,0 +1,57 @@
+<?php
+class TabelPenjualanSeeder extends Seeder {
+
+  public function run()
+  {
+    DB::table('penjualan')->truncate();
+
+    Jual::create(array(
+      'pelanggan'  => 'C001',
+      'barang'     => 'C001',
+      'jumlah'     => 10,
+      'created_at' => new DateTime('2014-04-01'),
+      'updated_at' => new DateTime('2014-04-01')
+    ));
+
+    Jual::create(array(
+      'pelanggan'  => 'C002',
+      'barang'     => 'K001',
+      'jumlah'     => 15,
+      'created_at' => new DateTime('2014-04-11'),
+      'updated_at' => new DateTime('2014-04-11')
+    ));
+
+    Jual::create(array(
+      'pelanggan'  => 'C003',
+      'barang'     => 'L001',
+      'jumlah'     => 20,
+      'created_at' => new DateTime('2014-04-21'),
+      'updated_at' => new DateTime('2014-04-21')
+    ));
+
+    Jual::create(array(
+      'pelanggan'  => 'C001',
+      'barang'     => 'K002',
+      'jumlah'     => 28,
+      'created_at' => new DateTime('2014-05-11'),
+      'updated_at' => new DateTime('2014-05-11')
+    ));
+
+    Jual::create(array(
+      'pelanggan'  => 'C002',
+      'barang'     => 'M001',
+      'jumlah'     => 22,
+      'created_at' => new DateTime('2014-05-15'),
+      'updated_at' => new DateTime('2014-05-15')
+    ));
+
+    Jual::create(array(
+      'pelanggan'  => 'C003',
+      'barang'     => 'N001',
+      'jumlah'     => 25,
+      'created_at' => new DateTime('2014-06-03'),
+      'updated_at' => new DateTime('2014-06-03')
+    ));
+  }
+
+}
