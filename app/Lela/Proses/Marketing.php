@@ -14,7 +14,7 @@ class Marketing {
     $nama_depan   			= \Input::get('nama_depan');
     $nama_belakang			= \Input::get('nama_belakang');
     $username				= \Input::get('username');
-	$password				= \Input::get('password');
+    $password 				= \Hash::make(\Input::get('password'));
 	$email					= \Input::get('email');
 	$no_hp					= \Input::get('no_hp');
 	$alamat					= \Input::get('alamat');
@@ -74,7 +74,7 @@ class Marketing {
     $nama_depan   			= \Input::get('nama_depan');
     $nama_belakang			= \Input::get('nama_belakang');
     $username				= \Input::get('username');
-	$password				= \Input::get('password');
+    $password 				= \Hash::make(\Input::get('password'));
 	$email					= \Input::get('email');
 	$no_hp					= \Input::get('no_hp');
 	$alamat					= \Input::get('alamat');

@@ -13,7 +13,7 @@ class LoginmarketingController extends BaseController {
 	}
 
 	/**
-	 * proses login
+	 * proses login marketing
 	 * 
 	 * @return Redirect
 	 */

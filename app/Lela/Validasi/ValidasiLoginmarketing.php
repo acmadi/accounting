@@ -9,7 +9,7 @@ class ValidasiLoginmarketing extends Validasi {
    */
   protected static $rules = array(
     'username' => 'required|min:5|max:20|exists:marketing,username',
-    'password' => 'required|min:6'
+    'password' => 'required|min:6|max:20|exists:marketing,password'
   );
 
 }

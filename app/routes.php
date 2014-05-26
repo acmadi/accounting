@@ -36,7 +36,7 @@ Route::post('login', array(
  */
 
 Route::get('loginmarketing', array(
-  'as'   => 'loginkaryawan',
+  'as'   => 'loginmarketing',
   'uses' => 'LoginmarketingController@form'
 ));
 
