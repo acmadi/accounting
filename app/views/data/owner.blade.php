@@ -26,10 +26,13 @@
             <th>Kode Karyawan</th>
             <th>Kode Perusahaan</th>
             <th>Kode Marketing</th>
+			<th>Nama Marketing</th>
             <th>Nama Depan</th>
             <th>Nama Belakang</th>
             <th>Handphone</th>
 			<th>Npwp</th>
+			<th>Status</th>
+			
 			<th>Aksi</th>
 
 		</tr>
@@ -49,6 +52,10 @@
                 {{{ $owner->kd_marketing }}}
               </td>
               <td>
+                {{{ $owner->nama_depanmarketing }}}
+              </td>
+
+              <td>
                 {{{ $owner->nama_depan }}}
               </td>
               <td>
@@ -59,6 +66,9 @@
               </td>
               <td>
                 {{{ $owner->npwp }}}
+              </td>
+              <td>
+                {{{ $owner->status_name }}}
               </td>
 
               <td>

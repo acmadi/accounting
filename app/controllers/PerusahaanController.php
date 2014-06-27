@@ -15,6 +15,7 @@ class PerusahaanController extends BaseController {
    *
    * @return View
    */
+   
   public function form()
   {
     // data perusahaan

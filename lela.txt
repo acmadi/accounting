@@ -1,0 +1,1003 @@
+-- phpMyAdmin SQL Dump
+-- version 4.1.12
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: 16 Jun 2014 pada 05.17
+-- Versi Server: 5.6.16
+-- PHP Version: 5.5.11
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `lela`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `absensi`
+--
+
+CREATE TABLE IF NOT EXISTS `absensi` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_karyawan` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kd_absen` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `tanggal` date NOT NULL,
+  `cuti` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `ijin` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `sakit` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `alpha` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `absensi_kd_absen_unique` (`kd_absen`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data untuk tabel `absensi`
+--
+
+INSERT INTO `absensi` (`id`, `kd_karyawan`, `kd_absen`, `tanggal`, `cuti`, `ijin`, `sakit`, `alpha`, `created_at`, `updated_at`) VALUES
+(3, 'K001', 'AB001', '2014-12-09', 'N', 'Y', 'N', 'N', '2014-05-30 07:14:48', '2014-05-30 10:00:42'),
+(5, 'K001', 'AB002', '2014-12-13', 'Y', 'N', 'Y', 'N', '2014-05-30 07:26:59', '2014-05-30 07:57:22'),
+(6, 'K001', 'AB003', '2014-12-15', 'Y', 'N', 'N', 'N', '2014-05-30 07:52:10', '2014-05-30 07:57:06'),
+(7, 'K001', 'AB004', '2014-12-20', 'N', 'N', 'N', 'Y', '2014-05-30 08:06:18', '2014-06-02 02:17:01');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `agama`
+--
+
+CREATE TABLE IF NOT EXISTS `agama` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_agama` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `nama` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `agama_kd_agama_unique` (`kd_agama`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data untuk tabel `agama`
+--
+
+INSERT INTO `agama` (`id`, `kd_agama`, `nama`, `created_at`, `updated_at`) VALUES
+(1, 'A001', 'Hindu', '2014-05-19 02:39:10', '2014-05-20 07:59:30'),
+(3, 'A002', 'Islam', '2014-05-20 07:59:19', '2014-05-20 07:59:19'),
+(5, 'A004', 'Kristen', '2014-05-20 08:00:12', '2014-05-20 08:00:12'),
+(6, 'A005', 'Budha', '2014-05-28 02:46:09', '2014-05-28 02:46:09');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `agenda`
+--
+
+CREATE TABLE IF NOT EXISTS `agenda` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_marketing` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kd_agenda` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `nama_agenda` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `keterangan` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `agenda_kd_agenda_unique` (`kd_agenda`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data untuk tabel `agenda`
+--
+
+INSERT INTO `agenda` (`id`, `kd_marketing`, `kd_agenda`, `nama_agenda`, `keterangan`, `created_at`, `updated_at`) VALUES
+(1, 'M003', 'AG001', 'agenda 1', 'ket agenda 1', '2014-06-05 03:47:40', '2014-06-05 03:47:59'),
+(2, 'M003', 'AG002', 'agenda 2', 'ket agenda 2', '2014-06-05 03:48:39', '2014-06-05 03:55:53');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `confirmation`
+--
+
+CREATE TABLE IF NOT EXISTS `confirmation` (
+  `id_confirmation` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(50) NOT NULL,
+  `username` varchar(25) NOT NULL,
+  `payment_proof` varchar(100) NOT NULL,
+  `status` int(11) NOT NULL,
+  PRIMARY KEY (`id_confirmation`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `departemen`
+--
+
+CREATE TABLE IF NOT EXISTS `departemen` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_dep` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `nama_dep` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `departemen_kd_dep_unique` (`kd_dep`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data untuk tabel `departemen`
+--
+
+INSERT INTO `departemen` (`id`, `kd_dep`, `nama_dep`, `created_at`, `updated_at`) VALUES
+(2, 'D002', 'IT', '2014-05-13 08:46:13', '2014-05-14 04:47:52'),
+(3, 'D001', 'Agama', '2014-05-14 01:13:09', '2014-05-14 04:29:08');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `detailgaji`
+--
+
+CREATE TABLE IF NOT EXISTS `detailgaji` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_potongan` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `nomor` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `detailgaji_nomor_unique` (`nomor`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data untuk tabel `detailgaji`
+--
+
+INSERT INTO `detailgaji` (`id`, `kd_potongan`, `nomor`, `jumlah`, `created_at`, `updated_at`) VALUES
+(2, 'A001', 'D001', 3, '2014-05-30 03:15:42', '2014-05-30 03:15:42'),
+(3, 'A001', 'D002', 6, '2014-05-30 03:15:55', '2014-05-30 03:15:55');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `gaji`
+--
+
+CREATE TABLE IF NOT EXISTS `gaji` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_tunjangan` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kd_lembur` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kd_pph` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kd_gaji` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `tanggal` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `tun_jab` int(11) NOT NULL,
+  `ttl_tunjangan` int(11) NOT NULL,
+  `pph_thr` int(11) NOT NULL,
+  `pph_gaji_sebulan` int(11) NOT NULL,
+  `jml_potongan` int(11) NOT NULL,
+  `ttl_lembur` int(11) NOT NULL,
+  `gaji_pokok` int(11) NOT NULL,
+  `gaji_bruto` int(11) NOT NULL,
+  `gaji_bersih` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `gaji_kd_gaji_unique` (`kd_gaji`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data untuk tabel `gaji`
+--
+
+INSERT INTO `gaji` (`id`, `kd_tunjangan`, `kd_lembur`, `kd_pph`, `kd_gaji`, `tanggal`, `tun_jab`, `ttl_tunjangan`, `pph_thr`, `pph_gaji_sebulan`, `jml_potongan`, `ttl_lembur`, `gaji_pokok`, `gaji_bruto`, `gaji_bersih`, `created_at`, `updated_at`) VALUES
+(2, 'T001', 'L002', 'PP001', 'G001', '2014-12-09', 5, 5, 3, 3, 3, 1, 67, 1, 6, '2014-06-09 22:15:23', '2014-06-09 20:29:17'),
+(3, 'T001', 'L001', 'PP001', 'G002', '2014-12-09', 4, 6, 2, 52, 21, 9, 64, 44, 32, '2014-06-10 08:00:06', '2014-06-10 08:00:24');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `golongan`
+--
+
+CREATE TABLE IF NOT EXISTS `golongan` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_gol` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `gol_pok` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `tun_jab` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `golongan_kd_gol_unique` (`kd_gol`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data untuk tabel `golongan`
+--
+
+INSERT INTO `golongan` (`id`, `kd_gol`, `gol_pok`, `tun_jab`, `created_at`, `updated_at`) VALUES
+(1, 'G001', '3A', 120000, '2014-05-14 02:41:15', '2014-05-14 02:46:25');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `groups`
+--
+
+CREATE TABLE IF NOT EXISTS `groups` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `permissions` text COLLATE utf8_unicode_ci,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `groups_name_unique` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data untuk tabel `groups`
+--
+
+INSERT INTO `groups` (`id`, `name`, `permissions`, `created_at`, `updated_at`) VALUES
+(1, 'admin', '{"admin":1}', '2014-06-05 20:49:23', '2014-06-05 20:49:23'),
+(2, 'regular', '{"regular":1}', '2014-06-05 20:49:23', '2014-06-05 20:49:23');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `harga`
+--
+
+CREATE TABLE IF NOT EXISTS `harga` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_harga` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `nama_harga` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `harga` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `harga_kd_harga_unique` (`kd_harga`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data untuk tabel `harga`
+--
+
+INSERT INTO `harga` (`id`, `kd_harga`, `nama_harga`, `harga`, `created_at`, `updated_at`) VALUES
+(1, 'H001', 'Modul N', '550000', '2014-05-28 03:00:28', '2014-06-10 06:34:08'),
+(5, 'H002', 'Modul B', '600000', '2014-05-28 03:06:35', '2014-05-28 03:06:35');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `jabatan`
+--
+
+CREATE TABLE IF NOT EXISTS `jabatan` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_jab` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `nama_jabatan` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `tun_kes` int(11) NOT NULL,
+  `tun_mkn` int(11) NOT NULL,
+  `tun_transport` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `jabatan_kd_jab_unique` (`kd_jab`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data untuk tabel `jabatan`
+--
+
+INSERT INTO `jabatan` (`id`, `kd_jab`, `nama_jabatan`, `tun_kes`, `tun_mkn`, `tun_transport`, `created_at`, `updated_at`) VALUES
+(2, 'J002', 'Pegawai', 50000, 60000, 70000, '2014-05-13 01:21:09', '2014-05-13 04:16:42'),
+(3, 'J003', 'asdf', 2222, 111, 555, '2014-05-13 03:40:21', '2014-05-13 03:40:21'),
+(4, 'J001', 'Direktur', 45000, 50000, 60000, '2014-05-13 04:27:28', '2014-05-13 04:27:28'),
+(5, 'J004', 'kamndo', 1200, 13000, 14000, '2014-05-13 07:28:16', '2014-05-13 07:28:16');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `karyawan`
+--
+
+CREATE TABLE IF NOT EXISTS `karyawan` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_agama` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kd_dep` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kd_jab` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kd_gol` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kd_statuskawin` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kd_karyawan` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `nik` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `nama_depan` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `nama_belakang` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `jen_kel` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `tempat_lahir` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `tgl_lahir` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `pendidikan` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `tgl_masuk` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `tgl_keluar` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `alamat` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `desa` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `kota` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `propinsi` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `kode_pos` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `no_telephone` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `no_handphone` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `npwp` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `foto` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `karyawan_kd_karyawan_unique` (`kd_karyawan`),
+  UNIQUE KEY `nik` (`nik`),
+  UNIQUE KEY `nik_2` (`nik`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data untuk tabel `karyawan`
+--
+
+INSERT INTO `karyawan` (`id`, `kd_agama`, `kd_dep`, `kd_jab`, `kd_gol`, `kd_statuskawin`, `kd_karyawan`, `nik`, `nama_depan`, `nama_belakang`, `jen_kel`, `tempat_lahir`, `tgl_lahir`, `pendidikan`, `tgl_masuk`, `tgl_keluar`, `alamat`, `desa`, `kota`, `propinsi`, `kode_pos`, `no_telephone`, `no_handphone`, `email`, `npwp`, `foto`, `created_at`, `updated_at`) VALUES
+(1, 'A001', 'D002', 'J001', 'G001', 'P002', 'K001', '123', 'raden', 'ahmad', 'laki-laki', 'gresik', '15 juli 1992', 'S1 Sistem Informasi', '17 juli 1992', '25 juli 1992', 'jl. nirwana no. 1', 'sawahmulya', 'sangkapura', 'jawa timur', '61181', '081804109307', '081804109307', 'msbdiy@yahoo.com', '1234', 'foto_04062014151515.jpg', '2014-05-20 02:25:14', '2014-06-04 08:15:15'),
+(4, 'A001', 'D001', 'J001', 'G001', 'P001', 'K003', '4786', 'dono', 'arius', 'perempuan', 'jogjakarta', '30 juli 2010', 'teknik informatika', '2 juli 2011', '5 juli 2012', 'Jl. Nirwana no. 1', 'kebo harjo', 'banguntapan', 'jawa Tengah', '51172', '0856987678', '0816987678', 'rdn_trik@yahoo.com', '12345678', '', '2014-05-20 04:38:55', '2014-05-30 03:57:48'),
+(6, 'A001', 'D001', 'J004', 'G001', 'P002', 'K002', '56456356', '6hfgh', 'hsdggsd', 'sgsdfg', 'fgsjsfh', 'gsdfg', 'gfgsdfg', 'sfgsfg', 'gsfg', 'sdfgs', 'fgsfgs', 'sfgsfg', 'sfgsfsj', '63456', '5634562', '5245245', 'rdn_trik@yahoo.com', '9006789', '', '2014-05-28 01:58:19', '2014-05-28 09:42:38'),
+(7, 'A001', 'D001', 'J004', 'G001', 'P002', 'K007', '2345345', 'dsfgsdf', 'adfasdf', 'sdfasdf', 'fadf', '30 juli 2010', 'fasdf', '2 juli 2011', '17 juli 1992', 'fjsdf', 'asfadf', 'adfadf', 'adfad', '2342', '352345', '23452345', 'amikom.me@gmail.com', '32452345', 'foto_04062014082028.jpg', '2014-06-04 01:20:28', '2014-06-04 01:20:28');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `lembur`
+--
+
+CREATE TABLE IF NOT EXISTS `lembur` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_tunjangan` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kd_lembur` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `jml_lembur_biasa` int(11) NOT NULL,
+  `jml_lembur_libur` int(11) NOT NULL,
+  `tarif_biasa` int(11) NOT NULL,
+  `tarif_libur` int(11) NOT NULL,
+  `total` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `lembur_kd_lembur_unique` (`kd_lembur`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data untuk tabel `lembur`
+--
+
+INSERT INTO `lembur` (`id`, `kd_tunjangan`, `kd_lembur`, `jml_lembur_biasa`, `jml_lembur_libur`, `tarif_biasa`, `tarif_libur`, `total`, `created_at`, `updated_at`) VALUES
+(2, 'T001', 'L001', 3, 4, 5, 6, 22, '2014-06-02 07:53:39', '2014-06-02 07:53:39'),
+(3, 'T002', 'L002', 7, 2, 9, 4, 35, '2014-06-02 07:54:04', '2014-06-02 07:54:04');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `marketing`
+--
+
+CREATE TABLE IF NOT EXISTS `marketing` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_marketing` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `nama_depan` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `nama_belakang` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `no_hp` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `alamat` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `kota` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `propinsi` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `kode_pos` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `marketing_kd_marketing_unique` (`kd_marketing`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data untuk tabel `marketing`
+--
+
+INSERT INTO `marketing` (`id`, `kd_marketing`, `nama_depan`, `nama_belakang`, `username`, `password`, `email`, `no_hp`, `alamat`, `kota`, `propinsi`, `kode_pos`, `created_at`, `updated_at`) VALUES
+(2, 'M003', 'Doni', 'Arius', 'doniarius', '$2y$10$ZcqNc6FEH0SItPtzNQ.9N.YWJFQ5WSJBeSQs7QUlXBCLYAenZ3fom', 'doniarius@yahoo.com', '081804109307', 'Jl. Nusa Indah No. 4', 'Yogyakarta', 'jawa Tengah', '5678', '2014-05-16 03:48:57', '2014-06-05 03:50:23');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `migrations`
+--
+
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data untuk tabel `migrations`
+--
+
+INSERT INTO `migrations` (`migration`, `batch`) VALUES
+('2014_04_06_132149_buat_tabel-users', 1),
+('2014_04_06_163057_create_session_table', 1),
+('2014_04_07_193037_buat_tabel_perusahaan', 1),
+('2014_04_07_204429_buat_tabel_pemasok', 1),
+('2014_04_18_181631_buat_tabel_pelanggan', 1),
+('2014_04_19_173441_buat_tabel_pemasukan', 1),
+('2014_04_20_203320_buat_tabel_pembelian', 1),
+('2014_04_30_200730_buat_tabel_pengeluaran', 1),
+('2014_04_30_221209_buat_tabel_barang', 1),
+('2014_05_05_004843_buat_tabel_penjualan', 1),
+('2014_05_12_092915_create_agama_table', 2),
+('2014_05_12_142925_create_departemen_table', 3),
+('2014_05_13_090223_create_jabatan_table', 4),
+('2014_05_13_134815_create_departemen_table', 5),
+('2014_05_13_145522_create_departemenme_table', 6),
+('2014_05_14_083827_create_golongan_table', 7),
+('2014_05_14_095234_create_ptkp_table', 8),
+('2014_05_14_130151_create_perusahaan_table', 9),
+('2014_05_16_082607_create_marketing_table', 10),
+('2014_05_19_084737_create_owner_table', 11),
+('2014_05_19_085509_create_karyawan_table', 11),
+('2014_05_19_093635_create_agama_table', 12),
+('2014_05_19_101501_create_karyawan_table', 13),
+('2014_05_20_160923_create_owner_table', 14),
+('2014_04_06_132149_buat_tabel-users', 1),
+('2014_04_06_163057_create_session_table', 1),
+('2014_04_07_193037_buat_tabel_perusahaan', 1),
+('2014_04_07_204429_buat_tabel_pemasok', 1),
+('2014_04_18_181631_buat_tabel_pelanggan', 1),
+('2014_04_19_173441_buat_tabel_pemasukan', 1),
+('2014_04_20_203320_buat_tabel_pembelian', 1),
+('2014_04_30_200730_buat_tabel_pengeluaran', 1),
+('2014_04_30_221209_buat_tabel_barang', 1),
+('2014_05_05_004843_buat_tabel_penjualan', 1),
+('2014_05_12_092915_create_agama_table', 2),
+('2014_05_12_142925_create_departemen_table', 3),
+('2014_05_13_090223_create_jabatan_table', 4),
+('2014_05_13_134815_create_departemen_table', 5),
+('2014_05_13_145522_create_departemenme_table', 6),
+('2014_05_14_083827_create_golongan_table', 7),
+('2014_05_14_095234_create_ptkp_table', 8),
+('2014_05_14_130151_create_perusahaan_table', 9),
+('2014_05_16_082607_create_marketing_table', 10),
+('2014_05_19_084737_create_owner_table', 11),
+('2014_05_19_085509_create_karyawan_table', 11),
+('2014_05_19_093635_create_agama_table', 12),
+('2014_05_19_101501_create_karyawan_table', 13),
+('2014_05_20_160923_create_owner_table', 14),
+('2014_05_28_091625_create_harga_table', 15),
+('2014_05_28_101727_create_potongan_table', 16),
+('2014_05_28_143809_create_pkp_table', 17),
+('2014_05_30_085426_create_penilaian_table', 18),
+('2014_05_30_090310_create_detailgaji_table', 19),
+('2014_05_30_103958_create_lembur_table', 20),
+('2014_05_30_105024_create_absensi_table', 21),
+('2014_05_30_155202_create_tunjangan_table', 22),
+('2014_06_03_084629_create_pph_table', 23),
+('2014_06_03_105948_create_support_ticket_table', 24),
+('2014_06_04_103248_create_ticket_reply_table', 25),
+('2014_06_05_082849_create_agenda_table', 26),
+('2014_06_05_110755_create_pph4_2_table', 27),
+('2014_06_09_082504_create_gaji_table', 28),
+('2014_06_11_084207_create_sewa_table', 29),
+('2014_06_11_094146_create_ppn_table', 30),
+('2014_06_11_132641_create_status_table', 31);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `owner`
+--
+
+CREATE TABLE IF NOT EXISTS `owner` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_karyawan` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kd_perusahaan` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kd_marketing` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kd_owner` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `nama_depan` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `nama_belakang` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `handphone` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `npwp` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `alamat` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `kota` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `propinsi` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `kode_pos` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `owner_kd_owner_unique` (`kd_owner`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data untuk tabel `owner`
+--
+
+INSERT INTO `owner` (`id`, `kd_karyawan`, `kd_perusahaan`, `kd_marketing`, `kd_owner`, `username`, `password`, `nama_depan`, `nama_belakang`, `handphone`, `npwp`, `alamat`, `kota`, `propinsi`, `kode_pos`, `email`, `created_at`, `updated_at`) VALUES
+(5, 'K002', 'PR001', 'M003', 'O001', 'rendi', 'rendi', 'adfadf', 'adfad', '234234', '34234', 'dfgsdfg', 'dfgsfg', 'sdfgsfg', '345345', 'elga@yahoo.com', '2014-06-03 01:57:04', '2014-06-03 01:57:04');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `pelanggan`
+--
+
+CREATE TABLE IF NOT EXISTS `pelanggan` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kode` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `nama` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `telp` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `alamat` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `pelanggan_kode_unique` (`kode`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data untuk tabel `pelanggan`
+--
+
+INSERT INTO `pelanggan` (`id`, `kode`, `nama`, `telp`, `alamat`, `created_at`, `updated_at`) VALUES
+(1, 'C001', 'CAHYANGGA', '0856 3452 7364', 'Jl. Yudhawastu No. 23', '2014-05-13 06:34:07', '2014-05-13 06:34:07'),
+(2, 'C002', 'IMAS', '022 8654 4434', 'Jl. Ciwastra No. 95', '2014-05-13 06:34:07', '2014-05-13 06:34:07'),
+(3, 'C003', 'ASEP', '022 3890 4590', 'Jl. Ciwidey No. 11', '2014-05-13 06:34:07', '2014-05-13 06:34:07');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `penilaian`
+--
+
+CREATE TABLE IF NOT EXISTS `penilaian` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_absen` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kd_penilaian` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kinerja` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `penilaian_kd_penilaian_unique` (`kd_penilaian`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data untuk tabel `penilaian`
+--
+
+INSERT INTO `penilaian` (`id`, `kd_absen`, `kd_penilaian`, `kinerja`, `created_at`, `updated_at`) VALUES
+(1, 'AB001', 'P002', 'B', '2014-06-02 09:34:39', '2014-06-03 01:18:22');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `perusahaan`
+--
+
+CREATE TABLE IF NOT EXISTS `perusahaan` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `logo` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `nama` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `alamat` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data untuk tabel `perusahaan`
+--
+
+INSERT INTO `perusahaan` (`id`, `logo`, `nama`, `alamat`, `created_at`, `updated_at`) VALUES
+(1, 'logo_21052014132900.jpg', 'Ahmad Corp', 'JL..', '2014-05-13 06:34:06', '2014-05-21 06:29:00');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `perusahaan1`
+--
+
+CREATE TABLE IF NOT EXISTS `perusahaan1` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_perusahaan` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `nama_perusahaan` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `alamat` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `kota` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `propinsi` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `kode_pos` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `handphone` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `telephone` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `fax` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `perusahaan1_kd_perusahaan_unique` (`kd_perusahaan`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data untuk tabel `perusahaan1`
+--
+
+INSERT INTO `perusahaan1` (`id`, `kd_perusahaan`, `nama_perusahaan`, `alamat`, `kota`, `propinsi`, `kode_pos`, `handphone`, `telephone`, `fax`, `email`, `created_at`, `updated_at`) VALUES
+(1, 'PR001', 'mediaku', 'solution', 'business', 'jawa', '9878', '081804109307', '0274897789', '02749874565', 'msbdiy@yahoo.com', '2014-05-14 02:16:16', '2014-05-16 01:16:57'),
+(2, 'PR002', 'smart', 'jl. smart', 'sleman', 'jawa tengah', '6787', '081867949678', '0274786786', '0274786786', 'amikom.me@gmail.com', '2014-05-14 08:32:51', '2014-05-14 08:32:51');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `pkp`
+--
+
+CREATE TABLE IF NOT EXISTS `pkp` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_pkp` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `batas_pkp` int(11) NOT NULL,
+  `tarif` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `pkp_kd_pkp_unique` (`kd_pkp`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data untuk tabel `pkp`
+--
+
+INSERT INTO `pkp` (`id`, `kd_pkp`, `batas_pkp`, `tarif`, `created_at`, `updated_at`) VALUES
+(1, 'P002', 4, 65000, '2014-05-28 08:22:53', '2014-05-28 08:42:02'),
+(3, 'P003', 7, 500000, '2014-05-28 08:41:08', '2014-05-28 08:42:18');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `potongan`
+--
+
+CREATE TABLE IF NOT EXISTS `potongan` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_potongan` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `nama_potongan` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `potongan_kd_potongan_unique` (`kd_potongan`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data untuk tabel `potongan`
+--
+
+INSERT INTO `potongan` (`id`, `kd_potongan`, `nama_potongan`, `created_at`, `updated_at`) VALUES
+(4, 'A001', 'Potongan B', '2014-05-28 04:14:18', '2014-05-28 07:31:51'),
+(5, 'A002', 'Potongan B', '2014-05-30 03:17:34', '2014-05-30 03:17:34');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `pph`
+--
+
+CREATE TABLE IF NOT EXISTS `pph` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_pkp` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kd_lembur` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kd_pph` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `pph_thr` int(11) NOT NULL,
+  `pph_gaji_sebulan` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `pph_kd_pph_unique` (`kd_pph`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data untuk tabel `pph`
+--
+
+INSERT INTO `pph` (`id`, `kd_pkp`, `kd_lembur`, `kd_pph`, `pph_thr`, `pph_gaji_sebulan`, `created_at`, `updated_at`) VALUES
+(2, 'P002', 'L001', 'PP001', 120000, 210000, '2014-06-03 03:33:07', '2014-06-03 03:33:19');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `pph4_2`
+--
+
+CREATE TABLE IF NOT EXISTS `pph4_2` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_perusahaan` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `id_pph42` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `jumlah_omzet` int(11) NOT NULL,
+  `bulan` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `tahun` int(11) NOT NULL,
+  `tanggal` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
+  `nama_penyetor` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `pph4_2_id_pph42_unique` (`id_pph42`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data untuk tabel `pph4_2`
+--
+
+INSERT INTO `pph4_2` (`id`, `kd_perusahaan`, `id_pph42`, `jumlah_omzet`, `bulan`, `tahun`, `tanggal`, `nama_penyetor`, `created_at`, `updated_at`) VALUES
+(2, 'PR002', 'PP001', 350000, 'April', 2014, '25', 'Andry', '2014-06-06 02:29:55', '2014-06-06 02:29:55'),
+(3, 'PR001', 'PP002', 1500000, 'Januari', 2004, '21', 'Rendi', '2014-06-06 02:30:32', '2014-06-06 02:30:32');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ppn`
+--
+
+CREATE TABLE IF NOT EXISTS `ppn` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_perusahaan` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kd_ppn` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `ppn_pembelian` int(11) NOT NULL,
+  `ppn_penjalan` int(11) NOT NULL,
+  `bulan` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `tahun` int(11) NOT NULL,
+  `biaya_membangun_sendiri` int(11) NOT NULL,
+  `penomoran_faktur` int(11) NOT NULL,
+  `penjualan_tanpa_faktur` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ppn_kd_ppn_unique` (`kd_ppn`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data untuk tabel `ppn`
+--
+
+INSERT INTO `ppn` (`id`, `kd_perusahaan`, `kd_ppn`, `ppn_pembelian`, `ppn_penjalan`, `bulan`, `tahun`, `biaya_membangun_sendiri`, `penomoran_faktur`, `penjualan_tanpa_faktur`, `created_at`, `updated_at`) VALUES
+(1, 'PR002', 'PP001', 25000, 3452, 'Januari', 1992, 23, 245, 467, '2014-06-11 06:17:32', '2014-06-11 06:17:51');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ptkp`
+--
+
+CREATE TABLE IF NOT EXISTS `ptkp` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_statuskawin` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `jumlah_ptkp` int(11) NOT NULL,
+  `status_kawin` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ptkp_kd_statuskawin_unique` (`kd_statuskawin`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data untuk tabel `ptkp`
+--
+
+INSERT INTO `ptkp` (`id`, `kd_statuskawin`, `jumlah_ptkp`, `status_kawin`, `created_at`, `updated_at`) VALUES
+(2, 'P001', 2, 'sudah kawin', '2014-05-14 04:09:44', '2014-05-14 04:41:47'),
+(3, 'P002', 4, 'belum kawin', '2014-05-14 04:10:11', '2014-05-14 04:42:31'),
+(4, 'P003', 6, 'sudah kawin', '2014-05-14 04:43:32', '2014-05-14 04:43:54');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `sessions`
+--
+
+CREATE TABLE IF NOT EXISTS `sessions` (
+  `id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `payload` text COLLATE utf8_unicode_ci NOT NULL,
+  `last_activity` int(11) NOT NULL,
+  UNIQUE KEY `sessions_id_unique` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data untuk tabel `sessions`
+--
+
+INSERT INTO `sessions` (`id`, `payload`, `last_activity`) VALUES
+('75a052d8327eb9a3485ce6e02bfe53f7d5339c7d', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoidGIyMlZuMzJSNVkyNnBEVHVLTHJ1R0RleTdGa1BiMkpsTVZXZE1rdyI7czo1OiJmbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjM6InVybCI7YToxOntzOjg6ImludGVuZGVkIjtzOjI4OiJodHRwOi8vbG9jYWxob3N0L2xlbGEvcHVibGljIjt9czozODoibG9naW5fODJlNWQyYzU2YmRkMDgxMTMxOGYwY2YwNzhiNzhiZmMiO2k6MTtzOjk6Il9zZjJfbWV0YSI7YTozOntzOjE6InUiO2k6MTQwMjg4ODAzNTtzOjE6ImMiO2k6MTQwMjg4MTc0MDtzOjE6ImwiO3M6MToiMCI7fX0=', 1402888035);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `sewa`
+--
+
+CREATE TABLE IF NOT EXISTS `sewa` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_harga` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kd_sewa` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `nama_sewa` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `sewa_kd_sewa_unique` (`kd_sewa`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data untuk tabel `sewa`
+--
+
+INSERT INTO `sewa` (`id`, `kd_harga`, `kd_sewa`, `nama_sewa`, `created_at`, `updated_at`) VALUES
+(4, 'H002', 'S001', 'sewa 1', '2014-06-11 02:43:59', '2014-06-11 02:43:59');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `status`
+--
+
+CREATE TABLE IF NOT EXISTS `status` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_status` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `status_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `status_id_status_unique` (`id_status`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data untuk tabel `status`
+--
+
+INSERT INTO `status` (`id`, `id_status`, `status_name`, `created_at`, `updated_at`) VALUES
+(2, 'ST001', 'Non aktif', '2014-06-11 07:42:02', '2014-06-16 02:52:19'),
+(3, 'ST002', 'Aktif', '2014-06-16 02:51:56', '2014-06-16 02:51:56');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `support_ticket`
+--
+
+CREATE TABLE IF NOT EXISTS `support_ticket` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_marketing` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kd_ticket` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `nama_ticket` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `keterangan` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `lampiran` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `jenis_ticket` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `status_ticket` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `support_ticket_kd_ticket_unique` (`kd_ticket`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data untuk tabel `support_ticket`
+--
+
+INSERT INTO `support_ticket` (`id`, `kd_marketing`, `kd_ticket`, `nama_ticket`, `keterangan`, `lampiran`, `jenis_ticket`, `status_ticket`, `created_at`, `updated_at`) VALUES
+(1, 'M003', 'S001', 'tiket A', 'keterangan tiket A', '', 'Low', 'Replay', '2014-06-03 09:03:57', '2014-06-04 02:05:15'),
+(4, 'M003', 'S002', 'asdfasdf', 'dfasdf', 'foto_04062014100425.jpg', 'Normal', 'Closed', '2014-06-04 02:04:25', '2014-06-04 03:04:25'),
+(5, 'M003', 'S004', 'Ticket 7', 'keterangan ticket 7', 'foto_04062014090814.PNG', 'Low', 'Closed', '2014-06-04 02:08:14', '2014-06-04 02:08:14'),
+(6, 'M003', 'S005', 'aa', 'vv', '', 'Normal', 'Replay', '2014-06-04 02:44:13', '2014-06-04 02:44:13');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ticket_reply`
+--
+
+CREATE TABLE IF NOT EXISTS `ticket_reply` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_ticket` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kd_reply` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `nama_reply` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `keterangan` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ticket_reply_kd_reply_unique` (`kd_reply`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data untuk tabel `ticket_reply`
+--
+
+INSERT INTO `ticket_reply` (`id`, `kd_ticket`, `kd_reply`, `nama_reply`, `keterangan`, `created_at`, `updated_at`) VALUES
+(2, 'S002', 'R001', 'name reply 1', 'content keterangan 1', '2014-06-04 08:37:34', '2014-06-04 08:37:34');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tunjangan`
+--
+
+CREATE TABLE IF NOT EXISTS `tunjangan` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kd_absen` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kd_tunjangan` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `ttl_tun_kes` int(11) NOT NULL,
+  `ttl_tun_makan` int(11) NOT NULL,
+  `ttl_tun_transport` int(11) NOT NULL,
+  `ttl_tun` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `tunjangan_kd_tunjangan_unique` (`kd_tunjangan`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data untuk tabel `tunjangan`
+--
+
+INSERT INTO `tunjangan` (`id`, `kd_absen`, `kd_tunjangan`, `ttl_tun_kes`, `ttl_tun_makan`, `ttl_tun_transport`, `ttl_tun`, `created_at`, `updated_at`) VALUES
+(2, 'AB001', 'T001', 6, 4, 2, 9, '2014-06-02 02:17:20', '2014-06-02 02:21:36'),
+(3, 'AB004', 'T002', 5, 7, 9, 23, '2014-06-02 02:46:19', '2014-06-02 02:46:19');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `foto` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `nama` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `nama_belakang` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `akses` smallint(6) NOT NULL,
+  `alamat` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
+
+--
+-- Dumping data untuk tabel `users`
+--
+
+INSERT INTO `users` (`id`, `foto`, `nama`, `nama_belakang`, `email`, `akses`, `alamat`, `username`, `password`, `created_at`, `updated_at`) VALUES
+(1, '', 'Admin', '', 'admin@local.com', 3, 'Bandung', 'admin', '$2y$10$6W2rexU5XTCRRA6snDPXZO27/lBf3RtFbpZ8qaaJNoiyP8HnC2YcC', '2014-05-13 06:34:05', '2014-05-13 06:34:05'),
+(3, '', 'Ibnu Rusdianto', '', 'ibnu@local.com', 1, 'Cigugur', 'inugrepes', '$2y$10$T03sOsnYwBnpkA.izeyxdOLKLifuGi21X4bn3sgyLo8uL8A/ntXqi', '2014-05-13 06:34:05', '2014-05-13 06:34:05'),
+(6, 'foto_22052014132842.PNG', 'rudi', 'rudianto', 'rdn_trik@yahoo.com', 2, 'adfasdf', 'fasdf', '$2y$10$PS5tNqpFDAAYJq2gSzoxmu9yklqXmBEpRwuGFBirX6nNA33uPMImq', '2014-05-22 06:28:42', '2014-06-04 02:20:52'),
+(7, '', '', NULL, 'msbdiy@yahoo.com', 0, '', '', 'raden', '2014-06-13 03:56:05', '2014-06-13 03:56:05'),
+(8, '', '', NULL, 'msbdiy@yahoo.com', 0, '', '', 'raden', '2014-06-13 04:01:18', '2014-06-13 04:01:18'),
+(9, '', '', NULL, 'msbdiy@yahoo.com', 0, '', '', 'raden', '2014-06-13 04:02:06', '2014-06-13 04:02:06'),
+(10, '', '', NULL, 'msbdiy@yahoo.com', 0, '', '', 'raden', '2014-06-13 04:07:46', '2014-06-13 04:07:46'),
+(11, '', '', NULL, 'msbdiy@yahoo.com', 0, '', '', 'raden', '2014-06-13 04:28:33', '2014-06-13 04:28:33'),
+(12, '', '', NULL, '', 0, '', '', '', '2014-06-13 06:11:13', '2014-06-13 06:11:13'),
+(13, '', '', NULL, 'msbdiy@yahoo.com', 0, '', '', 'aaa', '2014-06-16 01:22:49', '2014-06-16 01:22:49'),
+(14, '', '', NULL, 'msbdiy@yahoo.com', 0, '', '', 'raden', '2014-06-16 01:55:23', '2014-06-16 01:55:23'),
+(15, '', '', NULL, 'msbdiy@yahoo.com', 0, '', '', 'raden', '2014-06-16 01:56:19', '2014-06-16 01:56:19'),
+(16, '', '', NULL, 'msbdiy@yahoo.com', 0, '', '', 'rara', '2014-06-16 01:59:25', '2014-06-16 01:59:25'),
+(17, '', '', NULL, 'msbdiy@yahoo.com', 0, '', '', 'rara', '2014-06-16 01:59:56', '2014-06-16 01:59:56'),
+(18, '', '', NULL, 'msbdiy@yahoo.com', 0, '', '', 'rara', '2014-06-16 02:01:00', '2014-06-16 02:01:00'),
+(19, '', '', NULL, 'msbdiy@yahoo.com', 0, '', '', 'rara', '2014-06-16 02:01:21', '2014-06-16 02:01:21'),
+(20, '', '', NULL, 'msbdiy@yahoo.com', 0, '', '', 'tete', '2014-06-16 02:10:38', '2014-06-16 02:10:38'),
+(21, '', '', NULL, 'msbdiy@yahoo.com', 0, '', '', 'oke', '2014-06-16 02:16:21', '2014-06-16 02:16:21');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

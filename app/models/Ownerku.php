@@ -1,6 +1,20 @@
 <?php
 
+use Cartalyst\Sentry\Users\Eloquent\User as SentryUserModel;
+
 class Ownerku extends Eloquent {
+
+
+
+    // Add your validation rules here
+    public static $rules = [
+	
+        'nama_depan' => 'required',
+        'email' => 'required|email|unique:users,email,:id',
+        'password' => 'confirmed|required|min:5',
+        'recaptcha_response_field' => 'required|recaptcha',
+    ];
+
 
   /**
    * The database table used by the model.
@@ -14,7 +28,7 @@ class Ownerku extends Eloquent {
    *
    * @var array
    */
-  protected $fillable = array('kd_karyawan', 'kd_perusahaan', 'kd_marketing', 'kd_owner', 'username', 'password', 'nama_depan', 'nama_belakang', 'handphone', 'npwp', 'alamat', 'kota', 'propinsi', 'kode_pos', 'email');
+  protected $fillable = array('kd_karyawan', 'kd_perusahaan', 'kd_marketing', 'id_status', 'kd_owner', 'username', 'password', 'nama_depan', 'nama_belakang', 'handphone', 'npwp', 'alamat', 'kota', 'propinsi', 'kode_pos', 'email');
 
   /**
    * getter semua owner
@@ -27,8 +41,9 @@ class Ownerku extends Eloquent {
       ->join('karyawan', 'owner.kd_karyawan', '=', 'karyawan.kd_karyawan')
       ->join('perusahaan1', 'owner.kd_perusahaan', '=', 'perusahaan1.kd_perusahaan')
       ->join('marketing', 'owner.kd_marketing', '=', 'marketing.kd_marketing')
+      ->join('status', 'owner.id_status', '=', 'status.id_status')
 	  
-      ->select('karyawan.kd_karyawan', 'perusahaan1.kd_perusahaan', 'marketing.kd_marketing', 'owner.id', 'owner.kd_owner', 'owner.nama_depan', 'owner.nama_belakang', 'owner.handphone', 'owner.npwp', 'owner.kota')
+      ->select('karyawan.kd_karyawan', 'perusahaan1.kd_perusahaan', 'marketing.kd_marketing', 'status.id_status', 'status.status_name', 'marketing.nama_depan as nama_depanmarketing', 'owner.id', 'owner.kd_owner', 'owner.nama_depan', 'owner.nama_belakang', 'owner.handphone', 'owner.npwp', 'owner.kota')
 	  
       ->orderBy('owner.kd_owner', 'asc')
 	  
@@ -47,8 +62,9 @@ class Ownerku extends Eloquent {
       ->join('karyawan', 'owner.kd_karyawan', '=', 'karyawan.kd_karyawan')
       ->join('perusahaan1', 'owner.kd_perusahaan', '=', 'perusahaan1.kd_perusahaan')
       ->join('marketing', 'owner.kd_marketing', '=', 'marketing.kd_marketing')
+      ->join('status', 'owner.id_status', '=', 'status.id_status')
 	  
-      ->select('karyawan.kd_karyawan', 'perusahaan1.kd_perusahaan', 'marketing.kd_marketing', 'owner.id', 'owner.kd_owner', 'owner.nama_depan', 'owner.nama_belakang', 'owner.handphone', 'owner.npwp', 'owner.kota')
+      ->select('karyawan.kd_karyawan', 'perusahaan1.kd_perusahaan', 'marketing.kd_marketing', 'status.id_status', 'status.status_name', 'marketing.nama_depan as nama_depanmarketing', 'owner.id', 'owner.kd_owner', 'owner.nama_depan', 'owner.nama_belakang', 'owner.handphone', 'owner.npwp', 'owner.kota')
 
       ->orderBy('owner.kd_owner', 'asc')
 	  
@@ -68,8 +84,9 @@ class Ownerku extends Eloquent {
       ->join('karyawan', 'owner.kd_karyawan', '=', 'karyawan.kd_karyawan')
       ->join('perusahaan1', 'owner.kd_perusahaan', '=', 'perusahaan1.kd_perusahaan')
       ->join('marketing', 'owner.kd_marketing', '=', 'marketing.kd_marketing')
+      ->join('status', 'owner.id_status', '=', 'status.id_status')
 	  
-      ->select('karyawan.kd_karyawan', 'perusahaan1.kd_perusahaan', 'marketing.kd_marketing', 'owner.id', 'owner.kd_owner', 'owner.nama_depan', 'owner.nama_belakang', 'owner.handphone', 'owner.kota')
+      ->select('karyawan.kd_karyawan', 'perusahaan1.kd_perusahaan', 'marketing.kd_marketing', 'status.id_status', 'marketing.nama_depan as nama_depanmarketing', 'owner.id', 'owner.kd_owner', 'owner.nama_depan', 'owner.nama_belakang', 'owner.handphone', 'owner.npwp', 'owner.kota')
 
 	   ->orderBy($kolom, $tipe)
 	  
@@ -90,8 +107,9 @@ class Ownerku extends Eloquent {
       ->join('karyawan', 'owner.kd_karyawan', '=', 'karyawan.kd_karyawan')
       ->join('perusahaan1', 'owner.kd_perusahaan', '=', 'perusahaan1.kd_perusahaan')
       ->join('marketing', 'owner.kd_marketing', '=', 'marketing.kd_marketing')
+      ->join('status', 'owner.id_status', '=', 'status.id_status')
 	  
-      ->select('karyawan.kd_karyawan', 'perusahaan1.kd_perusahaan', 'marketing.kd_marketing', 'owner.id', 'owner.kd_owner', 'owner.nama_depan', 'owner.nama_belakang', 'owner.handphone', 'owner.npwp', 'owner.kota')
+      ->select('karyawan.kd_karyawan', 'perusahaan1.kd_perusahaan', 'marketing.kd_marketing', 'status.id_status', 'marketing.nama_depan as nama_depanmarketing', 'owner.id', 'owner.kd_owner', 'owner.nama_depan', 'owner.nama_belakang', 'owner.handphone', 'owner.npwp', 'owner.kota')
 
       ->where('owner.kd_owner', 'like', '%'.$cari.'%')
       ->orderBy($kolom, $tipe)
@@ -99,6 +117,50 @@ class Ownerku extends Eloquent {
   }
 
 
+  
+  
+  /**
+   * tambah data rules
+   * 
+   * @param  array $data data rules
+   * @return bool
+   */
+  public static function rules($data)
+  {
+  
+error_reporting("E_ALL") ;
+
+    // data
+    $owner	          	= new Ownerku;
+    $owner->kd_karyawan			= $data['kd_karyawan'];
+    $owner->kd_perusahaan  		= $data['kd_perusahaan'];
+    $owner->kd_marketing  		= $data['kd_marketing'];
+    $owner->id_status	  		= $data['id_status'];
+	
+    $owner->kd_owner  		= $data['kd_owner'];
+    $owner->username  		= $data['username'];
+    $owner->password  		= $data['password'];
+    $owner->nama_depan 		= $data['nama_depan'];
+    $owner->nama_belakang  	= $data['nama_belakang'];
+    $owner->handphone 	 	= $data['handphone'];
+    $owner->npwp  			= $data['npwp'];
+    $owner->alamat  		= $data['alamat'];
+    $owner->kota  			= $data['kota'];
+    $owner->propinsi  		= $data['propinsi'];
+    $owner->kode_pos  		= $data['kode_pos'];
+    $owner->email  			= $data['email'];
+
+	
+	
+    // simpan
+    return ($owner->save()) ? true : false;
+  }  
+  
+  
+  
+  
+  
+  
   /**
    * tambah data owner
    * 
@@ -115,6 +177,7 @@ error_reporting("E_ALL") ;
     $owner->kd_karyawan			= $data['kd_karyawan'];
     $owner->kd_perusahaan  		= $data['kd_perusahaan'];
     $owner->kd_marketing  		= $data['kd_marketing'];
+    $owner->id_status	  		= $data['id_status'];
 	
     $owner->kd_owner  		= $data['kd_owner'];
     $owner->username  		= $data['username'];
@@ -140,14 +203,16 @@ error_reporting("E_ALL") ;
    * 
    * @param int $id 
    */
+   
   public static function set($id)
   {
    return DB::table('owner')
       ->join('karyawan', 'owner.kd_karyawan', '=', 'karyawan.kd_karyawan')
       ->join('perusahaan1', 'owner.kd_perusahaan', '=', 'perusahaan1.kd_perusahaan')
       ->join('marketing', 'owner.kd_marketing', '=', 'marketing.kd_marketing')
+      ->join('status', 'owner.id_status', '=', 'status.id_status')
 	  
-       ->select('karyawan.kd_karyawan', 'perusahaan1.kd_perusahaan', 'marketing.kd_marketing', 'owner.id', 'owner.kd_owner', 'owner.username', 'owner.password', 'owner.nama_depan', 'owner.nama_belakang', 'owner.handphone', 'owner.npwp', 'owner.alamat', 'owner.kota', 'owner.propinsi', 'owner.kode_pos', 'owner.email')
+      ->select('karyawan.kd_karyawan', 'perusahaan1.kd_perusahaan', 'marketing.kd_marketing', 'status.id_status', 'marketing.nama_depan as nama_depanmarketing', 'owner.id', 'owner.kd_owner', 'owner.username', 'owner.password', 'owner.nama_depan', 'owner.nama_belakang', 'owner.handphone', 'owner.npwp', 'owner.alamat', 'owner.kota', 'owner.propinsi', 'owner.kode_pos', 'owner.email')
 
       ->where('owner.id', '=', $id)
       ->first();
@@ -168,6 +233,7 @@ error_reporting("E_ALL") ;
     $owner->kd_karyawan			= $data['kd_karyawan'];
     $owner->kd_perusahaan  		= $data['kd_perusahaan'];
     $owner->kd_marketing  		= $data['kd_marketing'];
+    $owner->id_status	  		= $data['id_status'];
 	
     $owner->kd_owner  		= $data['kd_owner'];
     $owner->username  		= $data['username'];

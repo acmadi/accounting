@@ -12,6 +12,7 @@ class ValidasiOwner extends Validasi {
     'kd_karyawan'			=> 'required|max:10',
     'kd_perusahaan'  		=> 'required|max:10',
     'kd_marketing' 			=> 'required|max:10',
+    'id_status' 			=> 'required|max:10',
 
     'kd_owner'      		=> 'required|max:10',
 	'username'				=> 'required|max:30', 

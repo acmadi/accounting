@@ -31,6 +31,7 @@ class OwnerController extends \BaseController {
    * 
    * @return View
    */
+   
   public function search()
   {
     // cari owner
@@ -52,10 +53,11 @@ class OwnerController extends \BaseController {
     $karyawan  		= Karyawanku::semua();
     $perusahaan1   	= Perusahaan1ku::semua();
 	$marketing	   	= Marketingku::semua();
+	$status		   	= Statusku::semua();
 	
     $tipe     = 'buat';
 
-    return View::make('form.owner', compact('karyawan', 'perusahaan1', 'marketing', 'tipe'));
+    return View::make('form.owner', compact('karyawan', 'perusahaan1', 'marketing', 'status', 'tipe'));
   }
 
 
@@ -103,10 +105,11 @@ class OwnerController extends \BaseController {
     $karyawan  		= Karyawanku::semua();
     $perusahaan1   	= Perusahaan1ku::semua();
 	$marketing	   	= Marketingku::semua();
+	$status		   	= Statusku::semua();
 	
     $tipe      	= 'rubah';
 
-    return View::make('form.owner', compact('owner', 'karyawan', 'perusahaan1', 'marketing', 'tipe'));
+    return View::make('form.owner', compact('owner', 'karyawan', 'perusahaan1', 'marketing', 'status', 'tipe'));
   }
 
   /**

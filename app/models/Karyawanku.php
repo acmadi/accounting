@@ -149,7 +149,7 @@ error_reporting("E_ALL") ;
 	
     if (isset($data[0]['foto']))	
 	    $karyawan->foto   			= $data[0]['foto'];
-		dd($data[0]['foto']);
+		
 		
     // simpan
     return ($karyawan->save()) ? true : false;
@@ -212,8 +212,10 @@ error_reporting("E_ALL") ;
     $karyawan->no_handphone		= $data['no_handphone'];
     $karyawan->email  			= $data['email'];
     $karyawan->npwp  			= $data['npwp'];
-    $karyawan->foto  			= $data['foto'];
-
+	
+	    if (isset($data[0]['foto']))	
+	    $karyawan->foto   			= $data[0]['foto'];	
+		
     // simpan
     return ($karyawan->save()) ? true : false;
   }

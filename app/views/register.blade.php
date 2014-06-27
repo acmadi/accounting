@@ -1,35 +1,48 @@
-<html>
-<head>
-    <title>Form Registrasi</title>
+@extends('layout') 
+@section('content') 
+  <div class="container"> <h2>Register Owner</h2> 
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  @if(Session::has('pesan'))
+  <div class="alert alert-success">{{ Session::get('pesan') }}</div>
+  @endif
 
-    <link rel="stylesheet" type="text/css" href="<?php echo asset('css/kube.min.css') ?>" />
+  {{Form::open(array('action' => 'RegisterownerController@store')) }} 
+  
+  {{Form::label('nama_depan', 'First Name') }} 
+  {{Form::text('nama_depan', '', array('class' => 'form-control'))}} 
 
-</head>
+  {{Form::label('nama_belakang', 'Last Name') }} 
+  {{Form::text('nama_belakang', '', array('class' => 'form-control'))}} 
+   
+  {{Form::label('email', 'Email') }} 
+  {{Form::text('email', '', array('class' => 'form-control'))}} 
 
-<body style="width:80%;margin:40px auto">
-    <div class="units-container">
-	
-        {{Form::open(array('action' => 'UserController@store')) }}
-            <h3>Form Registrasi</h3>
-            <label>
-                Email <span class="error"><?php echo $errors->first('email') ?></span>
-                <input type="text" name="email" value="<?php echo Form::old('email') ?>" class="width-50" />
-            </label>
-            <label>
-                Username <span class="error"><?php echo $errors->first('username') ?></span>
-                <input type="text" name="username" value="<?php echo Form::old('username') ?>" class="width-50" />
-            </label>
-            <label>
-                Password <span class="error"><?php echo $errors->first('password') ?></span>
-                <input type="password" name="password" value="<?php echo Form::old('password') ?>" class="width-50" />
-            </label>
-            <input type="submit" class="btn" value="Submit">
+  {{Form::label('username', 'Username') }} 
+  {{Form::text('username', '', array('class' => 'form-control'))}} 
 
-        </form>
+  {{Form::label('password', 'Password') }} 
+  {{Form::password('password', array('class' => 'form-control'))}} 
 
-    </div>
-</body>
-</html>
+  {{Form::label('handphone', 'Handphone') }} 
+  {{Form::text('handphone', '', array('class' => 'form-control'))}} 
+
+  {{Form::label('npwp', 'Npwp') }} 
+  {{Form::text('npwp', '', array('class' => 'form-control'))}} 
+
+  {{Form::label('alamat', 'Alamat') }} 
+  {{Form::text('alamat', '', array('class' => 'form-control'))}} 
+
+  {{Form::label('kota', 'Kota') }} 
+  {{Form::text('kota', '', array('class' => 'form-control'))}} 
+
+  {{Form::label('propinsi', 'Propinsi') }} 
+  {{Form::text('propinsi', '', array('class' => 'form-control'))}} 
+
+  {{Form::label('kode_pos', 'Kode Pos') }} 
+  {{Form::text('kode_pos', '', array('class' => 'form-control'))}} 
+  
+
+  <br>    
+  {{Form::submit('Make Register', array('class' => 'btn btn-primary')) }} 
+  <br>
+ {{ Form::close() }} </div> <br><br> @stop

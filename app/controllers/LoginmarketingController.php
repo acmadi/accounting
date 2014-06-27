@@ -13,10 +13,11 @@ class LoginmarketingController extends BaseController {
 	}
 
 	/**
-	 * proses login marketing
+	 * proses login
 	 * 
 	 * @return Redirect
 	 */
+	 
 	public function proses()
 	{
 		// validasi gagal

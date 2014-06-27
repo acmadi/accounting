@@ -11,42 +11,41 @@ class Karyawan {
   {
     // input
 
-    $kd_agama 		= \Input::get('kd_agama');
-    $kd_dep  		= \Input::get('kd_dep');
-	$kd_jab  		= \Input::get('kd_jab');
-    $kd_gol  		= \Input::get('kd_gol');
-    $kd_statuskawin	= \Input::get('kd_statuskawin');
-	
-	$kd_karyawan     	= \Input::get('kd_karyawan');
-    $nik     			= \Input::get('nik');	
-	$nama_depan     	= \Input::get('nama_depan');
-    $nama_belakang		= \Input::get('nama_belakang');	
-	$jen_kel	    	= \Input::get('jen_kel');
-    $tempat_lahir		= \Input::get('tempat_lahir');	
-	$tgl_lahir	     	= \Input::get('tgl_lahir');
-    $pendidikan			= \Input::get('pendidikan');	
-	$tgl_masuk	     	= \Input::get('tgl_masuk');
-    $tgl_keluar			= \Input::get('tgl_keluar');	
-	$alamat		     	= \Input::get('alamat');
-    $desa     			= \Input::get('desa');	
-	$kota		     	= \Input::get('kota');
-    $propinsi   		= \Input::get('propinsi');	
-	$kode_pos	     	= \Input::get('kode_pos');
-    $no_telephone		= \Input::get('no_telephone');	
-	$no_handphone     	= \Input::get('no_handphone');
-    $email     			= \Input::get('email');	
-    $npwp     			= \Input::get('npwp');	
-	
+    $kd_agama     	= \Input::get('kd_agama');
+    $kd_dep     	= \Input::get('kd_dep');
+    $kd_jab     	= \Input::get('kd_jab');
+    $kd_gol     	= \Input::get('kd_gol');
+    $kd_statuskawin = \Input::get('kd_statuskawin');
+  
+    $kd_karyawan    = \Input::get('kd_karyawan');
+    $nik          	= \Input::get('nik'); 
+    $nama_depan     = \Input::get('nama_depan');
+    $nama_belakang  = \Input::get('nama_belakang'); 
+    $jen_kel        = \Input::get('jen_kel');
+    $tempat_lahir   = \Input::get('tempat_lahir');  
+    $tgl_lahir      = \Input::get('tgl_lahir');
+    $pendidikan     = \Input::get('pendidikan');  
+    $tgl_masuk      = \Input::get('tgl_masuk');
+    $tgl_keluar     = \Input::get('tgl_keluar');  
+    $alamat         = \Input::get('alamat');
+    $desa           = \Input::get('desa');  
+    $kota         	= \Input::get('kota');
+    $propinsi       = \Input::get('propinsi');  
+    $kode_pos       = \Input::get('kode_pos');
+    $no_telephone   = \Input::get('no_telephone');  
+    $no_handphone   = \Input::get('no_handphone');
+    $email          = \Input::get('email'); 
+    $npwp           = \Input::get('npwp');  
+  
     $data    = compact('kd_agama', 'kd_dep', 'kd_jab', 'kd_gol', 'kd_statuskawin', 'kd_karyawan', 'nik', 'nama_depan', 'nama_belakang', 'jen_kel', 'tempat_lahir', 'tgl_lahir', 'pendidikan', 'tgl_masuk', 'tgl_keluar', 'alamat', 'desa', 'kota', 'propinsi', 'kode_pos', 'no_telephone', 'no_handphone', 'email', 'npwp');
-
-	
+  
     if (\Input::hasFile('foto'))
     {
       // nama file
-	  return 'ada foto';
       $eks  = \Input::file('foto')->getClientOriginalExtension();
       $foto = 'foto_'.date('dmYHis').'.'.$eks;
       $push = compact('foto');
+
 
       // unggah foto ke folder "public/foto"
       \Input::file('foto')->move('foto', $foto);
@@ -98,36 +97,51 @@ class Karyawan {
   {
     // input
     
-	$kd_agama 		= \Input::get('kd_agama');
-    $kd_dep  		= \Input::get('kd_dep');
-	$kd_jab  		= \Input::get('kd_jab');
-    $kd_gol  		= \Input::get('kd_gol');
-    $kd_statuskawin	= \Input::get('kd_statuskawin');
-	
-	$kd_karyawan     	= \Input::get('kd_karyawan');
-    $nik     			= \Input::get('nik');	
-	$nama_depan     	= \Input::get('nama_depan');
-    $nama_belakang		= \Input::get('nama_belakang');	
-	$jen_kel	    	= \Input::get('jen_kel');
-    $tempat_lahir		= \Input::get('tempat_lahir');	
-	$tgl_lahir	     	= \Input::get('tgl_lahir');
-    $pendidikan			= \Input::get('pendidikan');	
-	$tgl_masuk	     	= \Input::get('tgl_masuk');
-    $tgl_keluar			= \Input::get('tgl_keluar');	
-	$alamat		     	= \Input::get('alamat');
-    $desa     			= \Input::get('desa');	
-	$kota		     	= \Input::get('kota');
-    $propinsi   		= \Input::get('propinsi');	
-	$kode_pos	     	= \Input::get('kode_pos');
-    $no_telephone		= \Input::get('no_telephone');	
-	$no_handphone     	= \Input::get('no_handphone');
-    $email     			= \Input::get('email');	
-    $npwp     			= \Input::get('npwp');	
-    $foto     			= \Input::get('foto');
+    $kd_agama     		= \Input::get('kd_agama');
+    $kd_dep     		= \Input::get('kd_dep');
+    $kd_jab     		= \Input::get('kd_jab');
+    $kd_gol     		= \Input::get('kd_gol');
+    $kd_statuskawin 	= \Input::get('kd_statuskawin');
+  
+    $kd_karyawan      	= \Input::get('kd_karyawan');
+    $nik          		= \Input::get('nik'); 
+    $nama_depan       	= \Input::get('nama_depan');
+    $nama_belakang    	= \Input::get('nama_belakang'); 
+    $jen_kel        	= \Input::get('jen_kel');
+    $tempat_lahir   	= \Input::get('tempat_lahir');  
+    $tgl_lahir        	= \Input::get('tgl_lahir');
+    $pendidikan     	= \Input::get('pendidikan');  
+    $tgl_masuk        	= \Input::get('tgl_masuk');
+    $tgl_keluar     	= \Input::get('tgl_keluar');  
+    $alamat         	= \Input::get('alamat');
+    $desa           	= \Input::get('desa');  
+    $kota         		= \Input::get('kota');
+    $propinsi       	= \Input::get('propinsi');  
+    $kode_pos       	= \Input::get('kode_pos');
+    $no_telephone   	= \Input::get('no_telephone');  
+    $no_handphone       = \Input::get('no_handphone');
+    $email          	= \Input::get('email'); 
+    $npwp           	= \Input::get('npwp');  
+  
 
-    $data    = compact('kd_agama', 'kd_dep', 'kd_jab', 'kd_gol', 'kd_statuskawin', 'kd_karyawan', 'nik', 'nama_depan', 'nama_belakang', 'jen_kel', 'tempat_lahir', 'tgl_lahir', 'pendidikan', 'tgl_masuk', 'tgl_keluar', 'alamat', 'desa', 'kota', 'propinsi', 'kode_pos', 'no_telephone', 'no_handphone', 'email', 'npwp', 'foto');
+    $data    = compact('kd_agama', 'kd_dep', 'kd_jab', 'kd_gol', 'kd_statuskawin', 'kd_karyawan', 'nik', 'nama_depan', 'nama_belakang', 'jen_kel', 'tempat_lahir', 'tgl_lahir', 'pendidikan', 'tgl_masuk', 'tgl_keluar', 'alamat', 'desa', 'kota', 'propinsi', 'kode_pos', 'no_telephone', 'no_handphone', 'email', 'npwp');
 
 	
+    if (\Input::hasFile('foto'))
+    {
+      // nama file
+      $eks  = \Input::file('foto')->getClientOriginalExtension();
+      $foto = 'foto_'.date('dmYHis').'.'.$eks;
+      $push = compact('foto');
+
+
+      // unggah foto ke folder "public/foto"
+      \Input::file('foto')->move('foto', $foto);
+
+      array_push($data, $push);
+    }
+	
+  
     // rubah karyawan
     $rubah = \Karyawanku::rubah($id, $data);
 
@@ -138,8 +152,6 @@ class Karyawan {
     // sukses rubah
     return true;
   }
-  
 
   
-
 }

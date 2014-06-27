@@ -67,6 +67,7 @@ return array(
 		"file"    => "The :attribute must be :size kilobytes.",
 		"string"  => "The :attribute must be :size characters.",
 		"array"   => "The :attribute must contain :size items.",
+		"recaptcha" => 'The :attribute field is not correct.',
 	),
 	"unique"               => "The :attribute has already been taken.",
 	"url"                  => "The :attribute format is invalid.",

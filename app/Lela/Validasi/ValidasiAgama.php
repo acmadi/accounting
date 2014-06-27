@@ -8,7 +8,7 @@ class ValidasiAgama extends Validasi {
    * @var array
    */
   protected static $rules = array(
-
+	'kd_agama'     	=> 'required|max:10',
     'nama'      	=> 'required|max:50',
 
   );

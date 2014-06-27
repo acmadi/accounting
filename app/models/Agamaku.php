@@ -18,7 +18,7 @@ class Agamaku extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 	protected $fillable = array(
-		'nama'
+		'kd_agama', 'nama'
 	);
 
 	/**

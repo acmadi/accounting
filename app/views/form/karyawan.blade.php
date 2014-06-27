@@ -19,12 +19,14 @@
     @if ($tipe == 'buat')
       {{ Form::open(array(
         'route'  => 'karyawan.store',
-        'method' => 'post'
+        'method' => 'post',
+        'files'  => true
       )) }}
     @else
       {{ Form::model($karyawan, array(
         'route'  => array('karyawan.update', $karyawan->id),
-        'method' => 'patch'
+        'method' => 'patch',
+        'files'  => true
       )) }}
     @endif
 
@@ -395,10 +397,8 @@
         <label for="foto">Foto</label>
         <input type="file" class="form-control" name="foto" id="foto" placeholder="Masukkan foto anda...">
         <p class="help-block">{{ $errors->first('foto') }}</p>
-      </div>
-	
+      </div>	 
 
-	
 	  
   </div>
   <!-- /.panel-body -->

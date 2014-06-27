@@ -75,7 +75,7 @@ class KaryawanController extends \BaseController {
         ->withInput()
         ->withErrors( ValidasiKaryawan::errors() );
     }
-
+	
     // tambah karyawan
     $tambah = Karyawan::tambah();
 
@@ -119,6 +119,7 @@ class KaryawanController extends \BaseController {
    * @param  int  $id
    * @return Response
    */
+   
   public function update($id)
   {
     // validasi gagal

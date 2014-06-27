@@ -41,7 +41,7 @@ return array(
 	|
 	*/
 
-	'port' => 465,
+	'port' => 587,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'ahmad@smartlogicpro.com', 'name' => 'Awesome Laravel 4 Auth App'),
+	'from' => array('address' => 'amikom.me@gmail.com', 'name' => 'Smart Logic Pro'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'Amikom Ahmad',
+	'username' => 'amikom.me@gmail.com',
 
 	/*
 	|--------------------------------------------------------------------------

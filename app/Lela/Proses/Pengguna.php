@@ -76,13 +76,13 @@ class Pengguna {
   public function rubah($id)
   {
     // input
-    $nama     = \Input::get('nama');
-	$nama_belakang	  = \Input::get('nama_belakang');
-    $email    = \Input::get('email');
-    $akses    = \Input::get('jabatan');
-    $alamat   = \Input::get('alamat');
-    $username = \Input::get('username');
-    $password = \Hash::make(\Input::get('password'));
+    $nama     			= \Input::get('nama');
+	$nama_belakang	  	= \Input::get('nama_belakang');
+    $email    			= \Input::get('email');
+    $akses    			= \Input::get('jabatan');
+    $alamat   			= \Input::get('alamat');
+    $username 			= \Input::get('username');
+    $password 			= \Hash::make(\Input::get('password'));
     $data     = compact('nama', 'nama_belakang', 'email', 'akses', 'alamat', 'username', 'password');
 
     // ada foto

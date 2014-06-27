@@ -2,6 +2,60 @@
 
 class Owner {
 
+
+
+
+
+
+  /**
+   * tambah rules
+   * 
+   * @return bool
+   */
+  public function rules()
+  {
+    // input
+
+    $kd_karyawan		= \Input::get('kd_karyawan');
+    $kd_perusahaan		= \Input::get('kd_perusahaan');
+	$kd_marketing  		= \Input::get('kd_marketing');
+	$id_status  		= \Input::get('id_status');
+	
+	$kd_owner	     	= \Input::get('kd_owner');
+    $username     		= \Input::get('username');	
+	$password 			= \Hash::make(\Input::get('password'));
+    $nama_depan			= \Input::get('nama_depan');	
+	$nama_belakang	    = \Input::get('nama_belakang');
+    $handphone			= \Input::get('handphone');	
+	$npwp		     	= \Input::get('npwp');
+    $alamat   			= \Input::get('alamat');	
+	$kota	     		= \Input::get('kota');
+    $propinsi			= \Input::get('propinsi');	
+	$kode_pos     		= \Input::get('kode_pos');
+    $email  			= \Input::get('email');	
+
+    $data    = compact('kd_karyawan', 'kd_perusahaan', 'kd_marketing', 'id_status', 'kd_owner', 'username', 'password', 'nama_depan', 'nama_belakang', 'handphone', 'npwp', 'alamat', 'kota', 'propinsi', 'kode_pos', 'email');
+
+
+	
+	
+    // tambah owner
+    $rules = \Ownerku::rules($data);
+
+    // gagal tambah
+    if (! $rules)
+      return false;
+
+    // sukses tambah
+    return true;
+  }
+
+
+
+
+
+
+
   /**
    * tambah owner
    * 
@@ -14,6 +68,7 @@ class Owner {
     $kd_karyawan		= \Input::get('kd_karyawan');
     $kd_perusahaan		= \Input::get('kd_perusahaan');
 	$kd_marketing  		= \Input::get('kd_marketing');
+	$id_status  		= \Input::get('id_status');
 	
 	$kd_owner	     	= \Input::get('kd_owner');
     $username     		= \Input::get('username');	
@@ -28,7 +83,7 @@ class Owner {
 	$kode_pos     		= \Input::get('kode_pos');
     $email  			= \Input::get('email');	
 
-    $data    = compact('kd_karyawan', 'kd_perusahaan', 'kd_marketing', 'kd_owner', 'username', 'password', 'nama_depan', 'nama_belakang', 'handphone', 'npwp', 'alamat', 'kota', 'propinsi', 'kode_pos', 'email');
+    $data    = compact('kd_karyawan', 'kd_perusahaan', 'kd_marketing', 'id_status', 'kd_owner', 'username', 'password', 'nama_depan', 'nama_belakang', 'handphone', 'npwp', 'alamat', 'kota', 'propinsi', 'kode_pos', 'email');
 
 
 	
@@ -79,6 +134,7 @@ class Owner {
     $kd_karyawan		= \Input::get('kd_karyawan');
     $kd_perusahaan		= \Input::get('kd_perusahaan');
 	$kd_marketing  		= \Input::get('kd_marketing');
+	$id_status  		= \Input::get('id_status');
 	
 	$kd_owner	     	= \Input::get('kd_owner');
     $username     		= \Input::get('username');	
@@ -93,8 +149,7 @@ class Owner {
 	$kode_pos     		= \Input::get('kode_pos');
     $email  			= \Input::get('email');	
 
-    $data    = compact('kd_karyawan', 'kd_perusahaan', 'kd_marketing', 'kd_owner', 'username', 'password', 'nama_depan', 'nama_belakang', 'handphone', 'npwp', 'alamat', 'kota', 'propinsi', 'kode_pos', 'email');
-
+    $data    = compact('kd_karyawan', 'kd_perusahaan', 'kd_marketing', 'id_status', 'kd_owner', 'username', 'password', 'nama_depan', 'nama_belakang', 'handphone', 'npwp', 'alamat', 'kota', 'propinsi', 'kode_pos', 'email');
 	
 	
     // rubah owner

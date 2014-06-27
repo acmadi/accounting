@@ -2,6 +2,23 @@
 
 return array(
 
+/*
+
+'multi' => array(
+        'account' => array(
+            'driver' 	=> 'eloquent',
+            'model' 	=> 'User',
+			'table'		=> 'users'
+        ),
+        'user' => array(
+            'driver' 	=> 'eloquent',
+			'model'		=> 'Marketingku',
+            'table' 	=> 'marketing'
+        )
+    ),
+
+*/
+
 	/*
 	|--------------------------------------------------------------------------
 	| Default Authentication Driver
@@ -15,8 +32,12 @@ return array(
 	|
 	*/
 
+	
+	
 	'driver' => 'eloquent',
 
+	
+	
 	/*
 	|--------------------------------------------------------------------------
 	| Authentication Model
@@ -28,7 +49,10 @@ return array(
 	|
 	*/
 
-	'model' => 'User',
+
+	'model' => 'User', 
+
+
 
 	/*
 	|--------------------------------------------------------------------------
@@ -40,9 +64,12 @@ return array(
 	| default value but you may easily change it to any table you like.
 	|
 	*/
+	
 
-	'table' => 'users',
+	'table' => 'users', 
 
+	
+	
 	/*
 	|--------------------------------------------------------------------------
 	| Password Reminder Settings

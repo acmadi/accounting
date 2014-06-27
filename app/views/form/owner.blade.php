@@ -87,7 +87,31 @@
         <p class="help-block">{{ $errors->first('kd_marketing') }}</p>
       </div>
 
-	  	  
+
+
+	  
+      <div class="form-group {{ ($errors->has('id_status') ? 'has-error' : '') }}">
+        <label for="id_status">Kode Status</label>
+
+        <select name="id_status" id="id_status" class="form-control">
+          <option value=""></option>
+
+          @foreach ($status as $data)
+
+            @if ($tipe == 'buat')
+              <option value="{{ $data->id_status }}">{{ $data->id_status }}</option>
+            @else
+              <option value="{{ $data->id_status }}" {{ ($data->id_status == $owner->id_status ? 'selected' : '') }}>{{ $data->id_status }}</option>
+            @endif
+          @endforeach
+
+        </select>
+
+        <p class="help-block">{{ $errors->first('id_status') }}</p>
+      </div>
+
+	  
+
 
       <div class="form-group {{ ($errors->has('kd_owner') ? 'has-error' : '') }}">
         <label for="kd_owner">Kode Owner</label>
